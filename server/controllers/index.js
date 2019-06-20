@@ -1,11 +1,14 @@
 var models = require('../models');
+var connection = require('../db/index.js');
 
 module.exports = {
   messages: {
     // a function which handles a get request for all messages
     // read all messages and return array of string contents
     get: function (req, res) {
-      res.send();
+      // make req async
+      // res occurs on completion of async request
+      models.messages.get();
     },
     // a function which handles posting a message to the database
     // 
