@@ -8,7 +8,14 @@ module.exports = {
     get: function (req, res) {
       // make req async
       // res occurs on completion of async request
-      models.messages.get();
+      models.messages.get(function(err, results) {
+        if (err) {
+          console.log('we had an error retrieving messages!');
+          throw err;
+        } else {
+          res.json(results);
+        }
+      });
     },
     // a function which handles posting a message to the database
     // 
@@ -27,4 +34,3 @@ module.exports = {
     }
   }
 };
-
